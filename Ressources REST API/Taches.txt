@@ -1,0 +1,126 @@
+Binome 1 : Juba && Mounir
+Binome 2 : Asma && Khaoula
+==============
+Models:
+==============
+
+Locataire(Binome 1): 
+
+	Ajouter un locataire
+	Modifier locataire
+	Supprimer un locataire
+	Selectionner un locataire
+	Liste des locataires
+
+ATC(Binome 2): 
+
+	Ajouter un ATC
+	Modifier un ATC
+	Supprimer un ATC
+	Selectionner un ATC
+	Liste des ATC
+
+AM (Binome 1):
+ 
+	Ajouter un AM
+	Modifier un AM
+	Supprimer un AM
+	Selectionner un AM
+	Liste des AM
+
+Decideur(Binome 2): 
+
+	Ajouter un decideur
+	Modifier un decideur
+	Supprimer un decideur
+	Selectionner un decideur
+	Liste des decideurs
+
+DemandeInscription(Binome 1 | 2):
+
+	Ajouter une demande
+	modifier une demande 
+	selectionner une demande
+	liste des demandes
+
+Justificatif(Binome 1):
+
+	selectionner un justificatif 
+	ajouter une justificatif
+	modifier un justificatif
+
+PhotoIdentite (Binome 1) :
+
+	selectionner une photo
+	Ajouter une photo
+	Supprimer une photo
+	Modifier une photo
+
+PhotoSelfie (Binome 1):
+
+	selectionner une photo
+	Ajouter une photo
+	Supprimer une photo
+	Modifier une photo
+
+=========================
+Services:
+========================
+
+AuthentificationMobile(Binome 1)
+-------------------------------------
+	Inscription Locataire:
+		- Ajouter locataire ( Ajout dans bdd + Ajout de firebase)
+		- Ajouter DemandeInscription
+		- Ajouter photoSelfie
+		- Ajouter photoIdentite
+	Connexion Locataire:
+		- Selectionner locataire
+
+Inscription AM:
+		- Ajouter AM ( Ajout dans bdd + Ajout de firebase)
+		- Ajouter DemandeInscription
+		- Ajouter photoSelfie
+		- Ajouter photoIdentite
+	Connexion AM
+		- Selectionner AM
+-----------------------------------------------------
+AuthentificationWeb(Binome 2)
+-----------------------------------------------------
+	Inscription ATC:
+		- Ajouter ATC ( Ajout dans bdd + Ajout de firebase)
+		- Ajouter DemandeInscription
+		- Ajouter photoSelfie
+		- Ajouter photoIdentite
+	Connexion ATC
+		- Selectionner ATC
+Inscription Decideur:
+		- Ajouter Decideur ( Ajout dans bdd + Ajout de firebase)
+		- Ajouter DemandeInscription
+		- Ajouter photoSelfie
+		- Ajouter photoIdentite
+	Connexion Decideur
+		- Selectionner decideur		
+	ChangerEtatDemandeInscription
+		- modifier DemandeInscription
+	Ajouter justificatif
+		- inserer Justificatif
+
+==================================================
+
+Convention
+
+==================================================
+
+ModelNomDeLaTable Exemple : ModelLocataire
+
+ServiceNomDuService : ServiceWebAuthentification
+
+ControllerNomDuService : ControllerWebAuthentification
+
+RouteNomDuService : RouteWebAuthentification
+
+
+
+
+
