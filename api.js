@@ -70,13 +70,13 @@ app.post('/setusers',function(req,response) {
 app.post('/setreservation',function(req,response) {
   let body = req.body;
   pool.query(
-    'INSERT INTO public.reservation ( date, heure_entree, heure_sortie, iduser, idplace)VALUES ($1, $2, $3, $4 ,$5 )',
+    'INSERT INTO public.reservation ( date, heure_entree, heure_sortie, iduser, idplace)VALUES ($1, $2, $3, $4 ,$5 ) RETURNING numeroreservation',
     [ body.date, body.heure_entree, body.heure_sortie, body.iduser, body.idplace ],(error, results) => {
 
       if (error) {
         throw error
       } else {
-        response.sendStatus(200);
+        response.status(200).json(results.rows);
       }
 
       //  response.sendStatus(response.statusCode);
@@ -86,16 +86,7 @@ app.post('/setreservation',function(req,response) {
 
 
 
-app.get('/getreservations',function(req,response){  
-  
-  pool.query('select * from reservation', (error, results) => {
-    if (error) {
-      throw error
-    }
-    response.status(200).json(results.rows)
-})
- console.log("World")
-})
+
 
 
 app.get('/getaddesreservation',function(req,response){  
@@ -118,7 +109,7 @@ app.get('/getaddesreservation',function(req,response){
 
 app.get('/getparkings',function(req,response){  
   
-  pool.query('select * from parking', (error, results) => {
+  pool.query("select idparking,nom,commune,etat,photo,to_char(heuredebut,'HH24:MI') as heuredebut,to_char(heurefin,'HH24:MI') as heurefin,latitude,longitude,distance,nbrplaceslibres,nbrplaces,tempsestime,tarif from parking", (error, results) => {
     if (error) {
       throw error
     }
@@ -127,7 +118,16 @@ app.get('/getparkings',function(req,response){
  console.log("World")
 })
 
-
+app.get('/getreservations',function(req,response){  
+  
+  pool.query("select r.iduser,r.idplace,r.numeroreservation,to_char(date,'DD/MM/YYYY')  as date,to_char(heure_entree,'HH24:MI')  as heure_entree,to_char(heure_sortie,'HH24:MI')  as heure_sortie ,g.nom,g.tarif from reservation r inner join place p ON  p.idplace = r.idplace inner join parking g ON p.idparking=g.idparking", (error, results) => {
+    if (error) {
+      throw error
+    }
+    response.status(200).json(results.rows)
+})
+ console.log("World")
+})
 
 app.get('/login/:email/:mot_de_passe',function(req,response){  
  let Email = req.params.email;
